@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Open This, My Life ❤️</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow: hidden;
+  font-family: Georgia, serif;
+  background: #4b0718;
+  color: white;
+}
+
+/* First screen */
+.open-screen {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background:
+    radial-gradient(circle at center, #b51c4d, #720d2d 45%, #35030f);
+  cursor: pointer;
+}
+
+.open-content {
+  animation: pulse 2s infinite;
+}
+
+.open-heart {
+  font-size: 75px;
+}
+
+.open-title {
+  font-size: 42px;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.open-sub {
+  font-family: Arial, sans-serif;
+  opacity: .85;
+}
+
+/* Main page */
+.main {
+  display: none;
+  min-height: 100vh;
+  padding: 20px;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(circle at top, #b7194c, #650b28 50%, #35030f);
+}
+
+.card {
+  width: 100%;
+  max-width: 430px;
+  max-height: 94vh;
+  overflow-y: auto;
+  text-align: center;
+  padding: 25px 18px 30px;
+  border-radius: 30px;
+  background: rgba(110, 8, 38, .88);
+  border: 1px solid rgba(255,255,255,.2);
+  box-shadow: 0 0 50px rgba(255, 65, 120, .35);
+}
+
+.flowers {
+  font-size: 28px;
+}
+
+h1 {
+  font-size: 34px;
+  margin: 8px 0;
+}
+
+.baby {
+  color: #ffd1df;
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+.photo {
+  width: 100%;
+  max-width: 340px;
+  border-radius: 25px;
+  box-shadow: 0 12px 35px rgba(0,0,0,.35);
+}
+
+.message {
+  font-family: Arial, sans-serif;
+  font-size: 17px;
+  line-height: 1.55;
+  margin: 18px 5px;
+}
+
+.question {
+  font-size: 25px;
+  font-weight: bold;
+  margin: 20px 0 15px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  min-height: 55px;
+  position: relative;
+}
+
+button {
+  border: none;
+  border-radius: 50px;
+  padding: 14px 28px;
+  font-size: 17px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.yes {
+  background: white;
+  color: #a30f3d;
+}
+
+.no {
+  background: #d94066;
+  color: white;
+}
+
+.answer {
+  margin-top: 18px;
+  font-family: Arial, sans-serif;
+  font-size: 19px;
+  font-weight: bold;
+  color: #ffd6e1;
+}
+
+.heart {
+  position: fixed;
+  bottom: -30px;
+  font-size: 24px;
+  animation: rise 4s linear forwards;
+  pointer-events: none;
+}
+
+@keyframes pulse {
+  50% {
+    transform: scale(1.08);
+  }
+}
+
+@keyframes rise {
+  from {
+    transform: translateY(0) rotate(0);
+    opacity: 1;
+  }
+
+  to {
+    transform: translateY(-110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- OPEN SCREEN -->
+<div class="open-screen" id="openScreen" onclick="openLovePage()">
+
+  <div class="open-content">
+
+    <div class="open-heart">❤️</div>
+
+    <div class="open-title">
+      OPEN THIS, MY LIFE
+    </div>
+
+    <div class="open-sub">
+      Tap anywhere, meri jaan 🥹
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- MAIN PAGE -->
+<div class="main" id="mainPage">
+
+  <div class="card">
+
+    <div class="flowers">
+      🌹 ❤️ 🌹
+    </div>
+
+    <h1>
+      Happy Wifey Day 💗
+    </h1>
+
+    <div class="baby">
+      Mera Bachaaa, Meri Zindagiii 🥹❤️
+    </div>
+
+    <!-- Apni photo ka naam yahan bubu-dudu.jpg rakho -->
+    <img
+      src="bubu-dudu.jpg"
+      class="photo"
+      alt="Bubu & Dudu"
+    >
+
+    <div class="message">
+
+      Tum meri life ka woh hissa ho
+      jiske bina sab kuch incomplete lagta hai. 🫶🏻
+
+      <br><br>
+
+      I choose you today,
+      tomorrow and always. ❤️
+
+      <br><br>
+
+      Meri jaan, meri happiness,
+      meri favourite person. 💕
+
+    </div>
+
+    <div class="question">
+      Will you marry me? 💍
+    </div>
+
+    <div class="buttons">
+
+      <button class="yes" onclick="yesClicked()">
+        YES 💍❤️
+      </button>
+
+      <button
+        class="no"
+        id="noButton"
+        onclick="noClicked()">
+        NO 🙈
+      </button>
+
+    </div>
+
+    <div class="answer" id="answer"></div>
+
+  </div>
+
+</div>
+
+
+<script>
+
+function openLovePage() {
+
+  document.getElementById("openScreen").style.display = "none";
+
+  document.getElementById("mainPage").style.display = "flex";
+
+  createHearts();
+
+}
+
+
+/* YES button */
+
+function yesClicked() {
+
+  document.getElementById("answer").innerHTML =
+    "🥹❤️ SHE SAID YES! ❤️🥹<br><br>" +
+    "My forever person. 💍🌹";
+
+  for (let i = 0; i < 40; i++) {
+
+    setTimeout(() => {
+      createHeart();
+    }, i * 80);
+
+  }
+
+}
+
+
+/* NO button moves */
+
+function noClicked() {
+
+  const button = document.getElementById("noButton");
+
+  button.style.position = "absolute";
+
+  button.style.left =
+    Math.random() * 65 + "%";
+
+  button.style.top =
+    Math.random() * 100 + "px";
+
+}
+
+
+/* Floating hearts */
+
+function createHeart() {
+
+  const heart = document.createElement("div");
+
+  heart.className = "heart";
+
+  const hearts = [
+    "❤️",
+    "💗",
+    "💖",
+    "💕",
+    "🌹",
+    "✨"
+  ];
+
+  heart.innerHTML =
+    hearts[Math.floor(Math.random() * hearts.length)];
+
+  heart.style.left =
+    Math.random() * 100 + "vw";
+
+  heart.style.animationDuration =
+    (2.5 + Math.random() * 2) + "s";
+
+  document.body.appendChild(heart);
+
+  setTimeout(() => {
+    heart.remove();
+  }, 5000);
+
+}
+
+
+function createHearts() {
+
+  for (let i = 0; i < 15; i++) {
+
+    setTimeout(() => {
+      createHeart();
+    }, i * 300);
+
+  }
+
+}
+
+</script>
+
+</body>
+</html>
